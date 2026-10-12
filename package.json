@@ -1,0 +1,10 @@
+{
+  "name": "lets-unique-template",
+  "version": "0.2.0",
+  "description": "pulse — the template unique for lets: a mood dial that shows the whole contract.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": { "validate": "node scripts/validate.mjs" },
+  "repository": { "type": "git", "url": "https://github.com/TikoTikTok/lets-unique-template.git" }
+}

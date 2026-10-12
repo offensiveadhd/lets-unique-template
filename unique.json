@@ -1,30 +1,41 @@
 {
   "lip": 1,
   "name": "pulse",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "title": "Pulse — a dial you talk through",
-  "description": "A full-screen mood dial: drag the violet ring to set a value 0–100 and pick a mode chip; the companion reacts.",
+  "description": "A full-screen mood dial: drag (or arrow-key) the violet ring to set a value 0–100 and pick a mode chip; the companion reacts. Send to Claude hands the dial over.",
   "entry": "ui/index.html",
   "guide": "GUIDE.md",
   "icon": "icon.svg",
+  "engine": ">=0.4.0",
   "domains": ["pulse"],
   "capabilities": ["entity", "chat", "components"],
   "events": {
-    "pulse.value": { "summary": "Human set the dial" },
-    "pulse.mode": { "summary": "Human picked a mode chip" }
+    "pulse.value": { "summary": "Human set the dial (debounced 200 ms): {value}" },
+    "pulse.mode": { "summary": "Human picked a mode chip: {mode}" },
+    "pulse.export": { "summary": "\"Send to Claude\": {label, value, mode}. The engine saves it as a session and closes the window (handoff); answer in the transcript." },
+    "pulse.snapshot": { "summary": "Answer to the pulse.snapshot command (re = command id): {value, mode}" }
   },
   "commands": {
-    "pulse.set": { "summary": "Move the dial (animated)" },
-    "pulse.glow": { "summary": "Pulse the ring in a color" }
+    "pulse.set": { "summary": "Move the dial (animated): {value}" },
+    "pulse.glow": { "summary": "Pulse the ring in a color: {color?, ttl?}" },
+    "pulse.load": { "summary": "Restore the dial: {value?, mode?}. Animated, idempotent, silent (no value/mode events)." },
+    "pulse.snapshot": { "summary": "Ask the dial for its state; it replies with a pulse.snapshot event" }
   },
   "permissions": {
     "fs.write": [],
     "net": []
+  },
+  "session": {
+    "export": "pulse.export",
+    "snapshot": "pulse.snapshot",
+    "restore": "pulse.load"
   },
   "author": {
     "name": "your-name",
     "url": "https://github.com/your-name"
   },
   "license": "MIT",
-  "repository": "https://github.com/your-name/lets-unique-pulse"
+  "repository": "https://github.com/your-name/lets-unique-pulse",
+  "tags": ["template", "starter", "dial", "mood"]
 }

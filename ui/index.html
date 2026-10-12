@@ -9,17 +9,26 @@
 </head>
 <body data-unique="pulse">
   <main class="pulse-stage">
-    <svg class="pulse-ring" viewBox="0 0 260 260" aria-label="Mood dial, drag to set a value" role="slider" id="dial">
+    <svg class="pulse-ring" viewBox="0 0 260 260" id="dial"
+         role="slider" tabindex="0" aria-label="Mood dial, 0 to 100"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+      <circle class="focus-ring" cx="130" cy="130" r="122" />
       <circle class="track" cx="130" cy="130" r="104" />
       <circle class="arc" id="arc" cx="130" cy="130" r="104" />
       <circle class="knob" id="knob" cx="130" cy="26" r="11" />
       <text class="value" id="valueText" x="130" y="140" text-anchor="middle">50</text>
-      <text class="hint" x="130" y="166" text-anchor="middle">drag the ring</text>
+      <text class="hint" text-anchor="middle">
+        <tspan x="130" y="164">drag the ring</tspan>
+        <tspan x="130" y="181">or use the arrow keys</tspan>
+      </text>
     </svg>
-    <div class="chips" id="chips">
-      <button class="chip" data-mode="calm">calm</button>
-      <button class="chip" data-mode="focused">focused</button>
-      <button class="chip" data-mode="wild">wild</button>
+    <div class="controls">
+      <div class="chips" id="chips" role="group" aria-label="Mode">
+        <button type="button" class="chip" data-mode="calm" aria-pressed="false">calm</button>
+        <button type="button" class="chip active" data-mode="focused" aria-pressed="true">focused</button>
+        <button type="button" class="chip" data-mode="wild" aria-pressed="false">wild</button>
+      </div>
+      <button type="button" class="lets-btn lets-btn-primary" id="send">Send to Claude</button>
     </div>
   </main>
   <script type="module" src="app.js"></script>
