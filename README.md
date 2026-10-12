@@ -94,6 +94,11 @@ Checklist your UI must satisfy:
 - Keep `GUIDE.md` short (under ~1,200 words); it is read on every window open.
 - Declare permissions even when empty — `"fs.write": []` means "writes nothing".
 - Bump `version` in the manifest whenever you change events/commands.
+- Want "Send to Claude" semantics (the engine saves the window's state, closes
+  it, and can bring it back with `/lets <name> resume`)? Declare
+  `"session": {"export": "<name>.export", "snapshot": "<name>.snapshot", "restore": "<name>.load"}`
+  in the manifest and make your UI emit the export event and handle the
+  restore command. Without the block the engine assumes exactly those names.
 
 ## License
 
