@@ -1,6 +1,6 @@
 # lets-unique-template — "pulse"
 
-A minimal but complete **unique** for [lets](https://github.com/TikoTikTok/lets):
+A minimal but complete **unique** for [lets](https://github.com/offensiveadhd/lets):
 a full-screen dark-violet mood dial. The human drags a ring (or uses the arrow
 keys) to set a value 0–100 and picks one of three mode chips (calm / focused /
 wild); Doto, the companion, reacts and Claude can move the dial itself. It
